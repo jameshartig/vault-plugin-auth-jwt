@@ -479,7 +479,7 @@ func (b *jwtAuthBackend) authURL(ctx context.Context, req *logical.Request, d *f
 	}
 
 	clientNonce := d.Get("client_nonce").(string)
-	if clientNonce == "" && role.CallbackMode != callbackModeClient {
+	if clientNonce == "" && role.CallbackMode == callbackModeDirect {
 		return logical.ErrorResponse("missing client_nonce"), nil
 	}
 
